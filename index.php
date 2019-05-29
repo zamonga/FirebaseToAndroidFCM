@@ -36,7 +36,6 @@
             </div>
             <div class="card-body">
                 <form method="POST">
-
                     <div class="form-row">
                         <div class="name">Topic:</div>
                         <div class="value">
@@ -118,17 +117,18 @@
                     $notification->setPost_id($postID);
                     $notification->setClick_action($click_action);
 
-                    $requestData = $notification->getNotification();
+                    $androidRequestData = $notification->getNotification();
 
                     $topic = $_POST['topic'];
 
-                    $fields = array(
+                    $androidFields = array(
                         'to' => '/topics/' . $topic,
-                        'data' => $requestData,
+                        'data' => $androidRequestData,
                     );
 
+                    public function sendToAndroid(){
 
-                    $server_key = "AAAAC3qJOFY:APA91bHWw1zp_djGMZMmIHqNIyyrhASdLb3Z_91-ifR9_Se5ffOcGxPPH-yv8ZIbHyYOxhViuwP9XqPo3NTyAx2hhPrU536OoeI3aYYqtSkWmh3Ja7RzoC7qyOPY-uS7kXJDCORD2Hmp";
+                    $server_key = "AAAAC3qJOFY:APA91bHWw1zp_djGMZMmIHqNIyyrhASdLb3Z_91-ifR9_Se5ffOcGxPPH-yv8ZIbHyYOxhViuwP9XqPo3NTyAx2hhPrU536OoeI3aYYqtSkWmh3Ja7RzoC7qyOPY-uS7kXJDCORD2Hmp";    
 
                     $headers = array(
                         'Authorization: key=' . $server_key,
@@ -151,20 +151,20 @@
                     // Disabling SSL Certificate support temporarily
                     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($androidFields));
 
                     // Execute post
                     $result = curl_exec($ch);
                     if ($result === FALSE) {
                         echo "Failed.";
                         die('Curl failed: ' . curl_error($ch));
-                    } else {
-
-                        echo "Sent.";
-                    }
-
+                    } 
                     // Close connection
                     curl_close($ch);
+                    }
+
+
+                    
 
                     echo '<h2>Result</h2><hr/><h3>Request </h3><p><pre style="white-space: pre-wrap;">';
 
@@ -217,13 +217,11 @@
                             </td>
                         </tr>
                     </table>
-                    <?
+                    <?php
                     echo '</pre></p><h3>Response </h3><p><pre>';
                     echo $result;
                     echo '</pre></p>';
-
                 }
-
                 ?>
             </div>
         </div>

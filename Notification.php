@@ -5,7 +5,7 @@ class Notification{
 	private $original_url;
 	private $post_id;
 	private $click_action;
-	
+	 
 	function __construct(){
          
 	}
@@ -39,6 +39,16 @@ class Notification{
 		$notification['postID'] = $this->post_id;
 		$notification['click_action'] = $this->click_action;
 		return $notification;
+	}
+
+	public function getiOSNotification(){
+		$notification = array();
+		$notification['title'] = $this->title;
+		$notification['originalURL'] = $this->original_url;
+		$notification['postID'] = $this->post_id;
+		$notification['click_action'] = $this->click_action;
+		return $notification;
+
 	}
 }
 ?>

@@ -28,6 +28,9 @@
 							<label for="firebase_api">Firebase Server API Key:</label>
 							<input type="text"  class="form-control" id="firebase_api" placeholder="Enter Firebase Server API Key" name="firebase_api">
 						</div>
+
+
+						
 						<div class="form-group" id="firebase_token_group">
 							<label for="firebase_token">Firebase Token:</label>
 							<input type="text"  class="form-control" id="firebase_token" placeholder="Enter Firebase Token" name="firebase_token">
@@ -36,6 +39,9 @@
 							<label for="topic">Topic Name:</label>
 							<input type="text" class="form-control" id="topic" placeholder="Enter Topic Name" name="topic">
 						</div>
+
+
+
 						<div class="form-group">
 							<label for="title">Title:</label>
 							<input type="text"  class="form-control" id="title" placeholder="Enter Notification Title" name="title">
